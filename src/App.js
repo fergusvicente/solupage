@@ -1,26 +1,45 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import './App.css';
+import { HomePage } from './pages/homepage/homepage';
+import { ContactPage } from './pages/contact/contactpage';
+import {AboutPage} from './pages/about/aboutPage';
+import { NoMatch } from './pages/nomatch/nomatch';
+import  {Layout}  from './assets/layout/layout';
+import  {NavigationBar}  from './assets/navbar/navbar';
+import {Jumbotron} from './assets/jumbotron/jumbotron';
+import {MetodoUso} from './pages/metodo-Uso/metodoUso';
+import {Preguntas} from './pages/Preguntas/preguntas';
+import {DondeComprar} from './pages/dondecomprar/DondeComprar';
+import {Footer} from './assets/footer/footer';
+import {LavadoNasal} from './pages/LavadoNasal/lavadonasal';
+
+
+class App extends Component {
+  render() {
+    return (
+    <React.Fragment>
+      <Jumbotron />
+    <NavigationBar />
+      <Layout>
+    <Router>
+      <Switch>
+      <Route exact path="/" component={HomePage} />
+      <Route  path="/about" component={AboutPage} />
+      <Route  path="/contact" component={ContactPage} />
+      <Route  path="/MetodoUso" component={MetodoUso} />
+      <Route  path="/preguntas" component={Preguntas} />
+      <Route  path="/dondecomprar" component={DondeComprar} />
+      <Route  path="/lavadonasal" component={LavadoNasal} />
+      <Route component={NoMatch} />
+      </Switch>
+    </Router>
+    </Layout>
+    <Footer />
+    </React.Fragment>
+    );
+  }
 }
 
 export default App;
